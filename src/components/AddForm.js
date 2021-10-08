@@ -23,13 +23,14 @@ const AddForm = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         if (state.name === "" || state.position === "" || state.nickname === "") {
-            console.log('error:', props)
-            props.failFetch(props.error)
+            props.failFetch('Name, Position, and Nickname Required')
         }
         else{
             props.addSmurf(state);
         }
     }
+
+   
 
     return(<section>
         <h2>Add Smurf</h2>

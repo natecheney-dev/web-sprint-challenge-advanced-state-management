@@ -32,7 +32,7 @@ export const startFetch = ()=> {
 }
 
 export const successFetch = (smurf)=> {
-    
+    console.log("smurf",smurf)
     return ({type:SUCCESS_FETCH, payload:smurf});
 }
 
@@ -41,6 +41,15 @@ export const failFetch = (error)=> {
 }
 
 export const addSmurf = (item) => {
-    console.log(item, 'items');
-    return({type:ADD_SMURF, payload:item})
+    
+    axios.post("http://localhost:3333/smurfs", item)
+        .then (resp =>{
+            console.log('post', resp);
+        })
+        .catch (resp =>{
+            console.log('fail:', resp)
+        })
+        return({type:ADD_SMURF, payload:item})
+
+    
 }
